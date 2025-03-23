@@ -36,15 +36,15 @@ return new class extends Migration {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('address_id')->constrained('addresses');
-            $table->date('birth_date');
-            $table->string('gender');
-            $table->string('cpf')->unique();
-            $table->string('phone');
-            $table->string('email')->unique();
+            $table->foreignId('address_id')->nullable()->constrained('addresses');
+            $table->date('birth_date')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('cpf')->nullable()->unique();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable()->unique();
             $table->string('password');
-            $table->foreignId('user_group_id')->constrained('user_groups');
-            $table->boolean('active')->default(true);
+            $table->foreignId('user_group_id')->nullable()->constrained('user_groups');
+            $table->boolean('active')->default(true)->nullable();
             $table->timestamps();
         });
 

@@ -6,6 +6,8 @@
     <title>Dashboard Academia Fit</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+
     <style>
         /* Estilo personalizado para o menu lateral */
         .sidebar {
@@ -65,10 +67,13 @@
 </form>            </div>
         </div>
     </nav>
-
+        <Br></Br>
     <!-- Menu Lateral -->
     <aside id="sidebar" class="sidebar bg-white h-screen fixed top-0 left-0 shadow-md">
         <div class="p-4">
+            <br>
+            <br>
+<br>
             <ul class="space-y-2">
                 <li>
                     <a href="#" class="flex items-center p-2 text-gray-700 hover:bg-red-50 rounded-lg">
@@ -77,9 +82,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center p-2 text-gray-700 hover:bg-red-50 rounded-lg">
+                    <a href="{{ route('usuarios.index') }}" class="flex items-center p-2 text-gray-700 hover:bg-red-50 rounded-lg">
                         <i class="fas fa-user"></i>
-                        <span class="sidebar-text ml-2">Perfil</span>
+                        <span class="sidebar-text ml-2">Usuários</span>
                     </a>
                 </li>
                 <li>
@@ -118,6 +123,10 @@
             });
         });
     </script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Select2 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
 </body>
 </html>
