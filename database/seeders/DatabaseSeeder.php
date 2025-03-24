@@ -56,6 +56,12 @@ class DatabaseSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+        $adminGroupId = DB::table('user_groups')->insertGetId([
+            'name' => 'Proprietário',
+            'description' => 'Proprietário dos estabelecimentos',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
 
         // Cria usuários
         DB::table('users')->insert([

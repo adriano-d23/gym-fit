@@ -36,6 +36,7 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
+        d
         //
     }
 

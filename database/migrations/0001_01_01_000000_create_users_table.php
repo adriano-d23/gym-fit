@@ -45,6 +45,8 @@ return new class extends Migration {
             $table->string('password');
             $table->foreignId('user_group_id')->nullable()->constrained('user_groups');
             $table->boolean('active')->default(true)->nullable();
+            $table->string('remember_token', 100)->nullable();
+
             $table->timestamps();
         });
 

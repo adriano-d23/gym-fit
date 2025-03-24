@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Academia Fit</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Select2 CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
 
     <style>
@@ -47,70 +50,95 @@
         }
     </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-light">
 
     <!-- Menu Superior -->
-    <nav class="bg-white shadow-md fixed w-full top-0 z-50">
-        <div class="container mx-auto flex justify-between items-center p-4">
-            <div class="flex items-center">
-                <button id="sidebar-toggle" class="text-gray-700 focus:outline-none">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <a href="#" class="text-2xl font-bold text-red-600 ml-4">Academia Fit</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+        <div class="container-fluid">
+            <button id="sidebar-toggle" class="btn btn-link text-dark">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a class="navbar-brand ms-3 text-danger fw-bold" href="#">Academia Fit</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="#">Perfil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="#">Configurações</a>
+                    </li>
+                    <li class="nav-item">
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-danger">Logout</button>
+                        </form>
+                    </li>
+                </ul>
             </div>
-            <div class="flex items-center space-x-4">
-                <a href="#" class="text-gray-700 hover:text-red-600">Perfil</a>
-                <a href="#" class="text-gray-700 hover:text-red-600">Configurações</a>
-                <form action="{{ route('logout') }}" method="POST">
-    @csrf
-    <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700">Logout</button>
-</form>            </div>
         </div>
     </nav>
-        <Br></Br>
+    <br><br>
+
     <!-- Menu Lateral -->
-    <aside id="sidebar" class="sidebar bg-white h-screen fixed top-0 left-0 shadow-md">
+    <aside id="sidebar" class="sidebar bg-white vh-100 position-fixed shadow-sm">
         <div class="p-4">
-            <br>
-            <br>
-<br>
-            <ul class="space-y-2">
-                <li>
-                    <a href="#" class="flex items-center p-2 text-gray-700 hover:bg-red-50 rounded-lg">
+            <br><br><br>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-dark hover-bg-danger">
                         <i class="fas fa-home"></i>
-                        <span class="sidebar-text ml-2">Home</span>
+                        <span class="sidebar-text ms-2">Home</span>
                     </a>
                 </li>
-                <li>
-                    <a href="{{ route('usuarios.index') }}" class="flex items-center p-2 text-gray-700 hover:bg-red-50 rounded-lg">
+                <li class="nav-item">
+                    <a href="{{ route('usuarios.index') }}" class="nav-link text-dark hover-bg-danger">
                         <i class="fas fa-user"></i>
-                        <span class="sidebar-text ml-2">Usuários</span>
+                        <span class="sidebar-text ms-2">Usuários</span>
                     </a>
                 </li>
-                <li>
-                    <a href="#" class="flex items-center p-2 text-gray-700 hover:bg-red-50 rounded-lg">
+                <li class="nav-item">
+                    <a href="{{ route('establishment.index') }}" class="nav-link text-dark hover-bg-danger">
+                        <i class="fas fa-user"></i>
+                        <span class="sidebar-text ms-2">Estabelecimentos</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-dark hover-bg-danger">
                         <i class="fas fa-calendar-alt"></i>
-                        <span class="sidebar-text ml-2">Agenda</span>
+                        <span class="sidebar-text ms-2">Agenda</span>
                     </a>
                 </li>
-                <li>
-                    <a href="#" class="flex items-center p-2 text-gray-700 hover:bg-red-50 rounded-lg">
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-dark hover-bg-danger">
                         <i class="fas fa-chart-line"></i>
-                        <span class="sidebar-text ml-2">Relatórios</span>
+                        <span class="sidebar-text ms-2">Relatórios</span>
                     </a>
                 </li>
-                <li>
-                    <a href="#" class="flex items-center p-2 text-gray-700 hover:bg-red-50 rounded-lg">
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-dark hover-bg-danger">
                         <i class="fas fa-cog"></i>
-                        <span class="sidebar-text ml-2">Configurações</span>
+                        <span class="sidebar-text ms-2">Configurações</span>
                     </a>
                 </li>
             </ul>
         </div>
     </aside>
+
+    <!-- Conteúdo Principal -->
     <main id="content" class="content p-4 mt-16">
         @yield('content')
-    </main>  
+    </main>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Select2 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <!-- jQuery Mask -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const sidebar = document.getElementById('sidebar');
@@ -121,12 +149,18 @@
                 sidebar.classList.toggle('collapsed');
                 content.classList.toggle('collapsed');
             });
+
+            // Inicializar Select2
+            $('.select2').select2({
+                width: '100%',
+                placeholder: 'Selecione uma opção',
+                allowClear: true
+            });
+
+            // Aplicar máscaras
+            $('#cpf').mask('000.000.000-00');
+            $('#phone').mask('(00) 00000-0000');
         });
     </script>
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- Select2 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-
 </body>
 </html>
